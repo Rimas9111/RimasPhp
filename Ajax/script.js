@@ -85,5 +85,5 @@ function serialize(form) {
 }
 
 document.getElementById("submit").addEventListener("click", function(){
-  alert("Vardas: ");
+  alert("Labas");
 });

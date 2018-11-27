@@ -17,7 +17,7 @@ include 'config.php';
     <div class="form">
         <form action="" method="POST" class="ajax">                
             <label for="name"> Vardas: </label>
-            <input class="field" type="text" id="name" name="name" onkeyup="showHint(this.value)"><br>
+            <input class="field" type="text" id="name" name="name"><br>
             
             <label for="surname"> Pavardė: </label>
             <input class="field" type="text" id="surname" name="surname"><br>
