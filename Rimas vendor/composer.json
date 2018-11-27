@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpunit/php-text-template": "^1.2",
+        "phpoffice/phpspreadsheet": "^1.5"
+    }
+}
