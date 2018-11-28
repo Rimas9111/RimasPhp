@@ -15,7 +15,7 @@ include 'config.php';
 <body>
     
     <div class="form">
-        <form action="" method="POST" class="ajax">                
+        <form action="" method="post" class="ajax">                
             <label for="name"> Vardas: </label>
             <input class="field" type="text" id="name" name="name"><br>
             
@@ -25,7 +25,7 @@ include 'config.php';
             <label for="email"> Email: </label>
             <input class="field" type="email" id="email" name="email"><br>
 
-            <button type="submit" class="Submit" id="submit" name="submit">Pateikti</button>
+            <button type="submit" class="submit" id="submit" name="submit">Pateikti</button>
         </form>
     </div>
 
