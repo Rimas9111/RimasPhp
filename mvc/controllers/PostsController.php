@@ -83,8 +83,10 @@ class PostsController extends Controller
         }
     }
 
-    public function edit(){
-        $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/posts/store/');
+    public function edit($id){
+        $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/posts/update/');
+        $posts = new Posts();
+        $post = $posts->getPostById($id);
         $info = $post->fetch_assoc();
 
             $form->input([
@@ -105,13 +107,12 @@ class PostsController extends Controller
                 'rows' => "2",
                 'cols' => "50",
                 'name' => "content",
-                'class' => "",
                 'value' => $info['content']
             ]);
             $form->input([
-                'name' => "submit",
+                'name' => "update",
                 'type' => "submit",
-                'value' => "Add"
+                'value' => "update"
             ]);
 
         echo $form->get();

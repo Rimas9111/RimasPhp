@@ -53,6 +53,16 @@
             $query = $this->query;
             return $this;
         }
+        public function set($values){
+            $this->query .='SET ';
+            foreach ($values as $key => $value){
+                $this->query .= $key."="." '".$value."',";
+            }
+            $query = $this->query;
+            $this->query = substr($query, 0, -1);
+            $this->query .= ' ';
+            return $this;
+        }
         public function from($tableName){
             $this->query .= 'FROM '.$tableName.' ';
             return $this;
@@ -73,7 +83,7 @@
         public function get(){
             $result = mysqli_query($this->connect(), $this->query);
             //$row = mysqli_fetch_array($result);
-            echo $this->query;
+            // echo $this->query;
             return $result;
 
         }

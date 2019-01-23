@@ -7,14 +7,10 @@ class Posts
         $db->select()->from('posts');
         return $db->get();
     }
-    public function getPostsById(){
+    public function getPostById(){
         $db = new Database();
+        $id = '10';
         $db->select()->from('posts')->where('id',$id);
-        return $db->get();
-    }
-    public function getPostBySlug($slug){
-        $db = new Database();
-        $db->select()->from('posts')->where('slug',$slug);
         return $db->get();
     }
     public function insertPost($slug, $title, $content, $author, $photo, $time, $active){
