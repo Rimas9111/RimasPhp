@@ -85,24 +85,28 @@ class PostsController extends Controller
 
     public function edit(){
         $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/posts/store/');
-        
+        $info = $post->fetch_assoc();
+
             $form->input([
                 'name' => "title",
                 'type' => "text",
                 // 'class' => "bootsrap",
-                'placeholder' => "Title"            
+                'placeholder' => "Title",
+                'value' => $info['title']           
     
             ])->input([
                 'name' => "photo",
                 'type' => "text",
-                'placeholder' => "Image URL"
+                'placeholder' => "Image URL",
+                'value' => $info['photo']
             ]);
     
             $form->textarea([
                 'rows' => "2",
                 'cols' => "50",
                 'name' => "content",
-                'class' => ""
+                'class' => "",
+                'value' => $info['content']
             ]);
             $form->input([
                 'name' => "submit",
