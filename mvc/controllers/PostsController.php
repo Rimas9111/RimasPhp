@@ -119,7 +119,16 @@ class PostsController extends Controller
     }
 
     public function update(){
-        
+        $posts = new Posts();
+        $id = '10';
+        if(isset($_POST['update'])){
+            $title = $_POST['title'];
+            $slug = Helper::getSlug($_POST['title']);
+            $content = $_POST['content'];
+            $photo = $_POST['photo'];
+            $time = date("Y-m-d H:i:s");
+            $posts->updatePost($id, $slug, $title, $content, $photo, $time);
+        }
     }
 
     public function delete(){

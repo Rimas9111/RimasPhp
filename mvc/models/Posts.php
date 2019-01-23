@@ -23,6 +23,7 @@ class Posts
     }
     public function updatePost($id, $slug, $title, $content, $photo, $time){
         $db = new Database();
+        $id = '10';
         $db->update('posts')
         ->set([
             '`slug`' => $slug,
