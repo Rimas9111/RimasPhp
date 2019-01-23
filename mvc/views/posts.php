@@ -2,5 +2,5 @@
     // echo "bandymas";
     echo $this->headline;
 
-    var_dump($this->posts);
+    // var_dump($this->posts);
 ?>

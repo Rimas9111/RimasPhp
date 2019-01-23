@@ -7,11 +7,11 @@ $path = explode( '/', $_SERVER['PATH_INFO']);
 // die();
 $classFile = '';
 
-    //$path[1] - Cpntrolleris
-    //$path[2] - metodas
-    if (isset($path[1])){ // posts
-    $classFile = ucfirst($path[1]).'Controller'; //PostController
-    }
+//$path[1] - Cpntrolleris
+//$path[2] - metodas
+if (isset($path[1])){ // posts
+$classFile = ucfirst($path[1]).'Controller'; //PostController
+}
 
     if (file_exists( 'controllers/'.$classFile.'.php')){
         include_once('controllers/'.$classFile.'.php');

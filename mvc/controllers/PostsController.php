@@ -2,6 +2,7 @@
 include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
 include_once '/wamp64/www/RimasPhp/mvc/models/Posts.php';
 include_once '/wamp64/www/RimasPhp/mvc/helpers/FormHelper.php';
+include_once '/wamp64/www/RimasPhp/mvc/helpers/Helper.php';
 
 class PostsController extends Controller
 {
@@ -26,16 +27,16 @@ class PostsController extends Controller
     }
 
     public function add(){
-        $form = new FormHelper('POST','');
+        $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/posts/store/');
 
         $form->input([
             'name' => "title",
             'type' => "text",
             // 'class' => "bootsrap",
-            'placeholder' => "Title"
+            'placeholder' => "Title"         
 
         ])->input([
-            'name' => "image",
+            'name' => "photo",
             'type' => "text",
             'placeholder' => "Image URL"
         
@@ -43,11 +44,6 @@ class PostsController extends Controller
             'name' => "public",
             'type' => "checkbox",
             'value' => 1
-
-        ])->input([
-            'name' => "submit",
-            'type' => "submit",
-            'value' => "Add"
         ]);
         $form->select([
             '1' => "vienas",
@@ -61,12 +57,74 @@ class PostsController extends Controller
         $form->textarea([
             'rows' => "2",
             'cols' => "50",
-            'name' => "textarea",
+            'name' => "content",
             'class' => ""
+        ]);
+        $form->input([
+            'name' => "submit",
+            'type' => "submit",
+            'value' => "Add"
         ]);
 
         echo $form->get();
     }
+
+    public function store(){
+        $post = new Posts;
+        if(isset($_POST['submit'])){
+            $slug = Helper::getSlug($_POST['title']);
+            $title = $_POST['title'];
+            $photo = $_POST['photo'];
+            $author = '1';
+            $content = $_POST['content'];
+            $time = date('Y-m-d H:i:s');
+            $active = '1';
+            $post->insertPost($slug, $title, $photo, $author, $content, $time, $active);
+        }
+    }
+
+    public function edit(){
+        $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/posts/store/');
+        
+            $form->input([
+                'name' => "title",
+                'type' => "text",
+                // 'class' => "bootsrap",
+                'placeholder' => "Title"            
+    
+            ])->input([
+                'name' => "photo",
+                'type' => "text",
+                'placeholder' => "Image URL"
+            ]);
+    
+            $form->textarea([
+                'rows' => "2",
+                'cols' => "50",
+                'name' => "content",
+                'class' => ""
+            ]);
+            $form->input([
+                'name' => "submit",
+                'type' => "submit",
+                'value' => "Add"
+            ]);
+
+        echo $form->get();
+    }
+
+    public function update(){
+        
+    }
+
+    public function delete(){
+        
+    }
+
+    // public function test(){
+    //     $slug = Helper::getSlug('Posto Pavadinimas');
+    //     echo $slug;
+    // }
 
 }
  

@@ -3,7 +3,7 @@ class FormHelper
 {
     private $form = '';
 
-    public function __constructor($method, $action)
+    public function __construct($method, $action)
     {
         $this->form .= '<form method="'.$method.'" action="'.$action.'">';
     }

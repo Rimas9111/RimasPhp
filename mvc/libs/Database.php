@@ -12,12 +12,45 @@
             // $connection = mysqli_connect($serverName, $userName ,$password , $dbName);
             $this->conn = mysqli_connect("localhost", "root", "", "dbname");
             if (!$this->conn){
-                echo "error" .PHP_EOL;
+                echo "error" .PHP_E01;
+                exit;
             }
             return $this->conn;
         }
+        
         public function select($target = '*'){
             $this->query .= 'SELECT '.$target.' ';
+            return $this;
+        }
+        public function update($tableName){
+            $this->query = 'UPDATE '.$tableName.' ';
+            return $this;
+        }
+        public function insert(){
+            $this->query = 'INSERT ';
+            return $this;
+        }
+        public function delete(){
+            $this->query = 'DELETE ';
+            return $this;
+        }
+        public function into($tableName){
+            $this->query .='INTO '.$tableName.' ';
+            return $this;
+        }
+        public function row($rows){
+            $this->query .='(';
+            foreach ($rows as $row){
+                $this->query .= $row.',';
+            }
+            $query = $this->query;
+            $this->query = substr($query, 0, -1);
+            $this->query .= ') ';
+            return $this;
+        }
+        public function value($value){
+            $this->query .='VALUES (' .$value .')';
+            $query = $this->query;
             return $this;
         }
         public function from($tableName){
@@ -39,8 +72,9 @@
         
         public function get(){
             $result = mysqli_query($this->connect(), $this->query);
-            $row = mysqli_fetch_array($result);
-            return $row;
+            //$row = mysqli_fetch_array($result);
+            echo $this->query;
+            return $result;
 
         }
     }
