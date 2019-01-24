@@ -7,9 +7,9 @@ class Posts
         $db->select()->from('posts');
         return $db->get();
     }
-    public function getPostById(){
+    public function getPostById($id){
         $db = new Database();
-        $id = '10';
+        // $id = '11';
         $db->select()->from('posts')->where('id',$id);
         return $db->get();
     }
@@ -22,8 +22,8 @@ class Posts
         return $db->get();
     }
     public function updatePost($id, $slug, $title, $content, $photo, $time){
+        // $id = '11';
         $db = new Database();
-        $id = '10';
         $db->update('posts')
         ->set([
             '`slug`' => $slug,

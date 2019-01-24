@@ -36,12 +36,12 @@ class FormHelper
         $this->form .= '</select>';
         return $this;
     }
-    public function textarea($attributes){
+    public function textarea($attributes, $content =''){
         $this->form .= '<textarea ';
             foreach ($attributes as $key => $attr){
                 $this->form .= $key.'="' . $attr .'" ';
             }
-        $this->form .= '>' .'</textarea>';
+        $this->form .= '>' .$content .'</textarea>';
         return $this;
     }
 }
