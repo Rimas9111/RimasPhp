@@ -1,6 +1,6 @@
 <?php
     // echo "bandymas";
-    echo $this->headline;
+    echo $this->headline;?>
 
-    // var_dump($this->posts);
-?>
+    <input class="text-field" name="text-field">
+    <div id="resultarea" class="resultarea"></div>

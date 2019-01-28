@@ -114,6 +114,12 @@ class PostsController extends Controller
                 'type' => "submit",
                 'value' => "update"
             ]);
+            
+            $form->input([
+                'name' => 'delete',
+                'type' => 'submit',
+                'value' => 'delete'
+            ]);
 
         echo $form->get();
     }
@@ -127,12 +133,22 @@ class PostsController extends Controller
             $photo = $_POST['photo'];
             $time = date("Y-m-d H:i:s");
             $posts->updatePost($id, $slug, $title, $content, $photo, $time);
+        } else {
+            if(isset($_POST['delete'])){
+                $this->delete($id);
+            }
         }
     }
 
-    public function delete(){
-        
+        public function test(){
+        $username = $_POST['myusername'];
+        // echo $username;
+        $slug = Helper::getSlug($username);
+        echo $slug;
     }
+
+
+
 
     // public function test(){
     //     $slug = Helper::getSlug('Posto Pavadinimas');

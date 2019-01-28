@@ -34,6 +34,14 @@
             $this->query = 'DELETE ';
             return $this;
         }
+        public function softDelete($columnName){
+            $this->query .= 'SET '.$columnName .' ';
+            return $this;
+        }
+        public function columns($columns){
+            $this->query .= '(' . $columns . ')';
+            return $this;
+        }
         public function into($tableName){
             $this->query .='INTO '.$tableName.' ';
             return $this;
@@ -68,11 +76,11 @@
             return $this;
         }
         public function where($field, $value, $operator = '='){
-            $this->query .= 'WHERE '.$field.' '.$operator.' '.$value.' ';
+            $this->query .= 'WHERE '.$field.' '.$operator.' "'.$value.'" ';
             return $this;
         }
         public function whereAnd($field, $value, $operator = '='){
-            $this->query .= 'AND '.$field.' '.$operator.' '.$value.' ';
+            $this->query .= 'AND '.$field.' '.$operator.' "'.$value.'" ';
             return $this;
         }
         public function whereOr($field, $value, $operator = '='){
@@ -83,7 +91,7 @@
         public function get(){
             $result = mysqli_query($this->connect(), $this->query);
             //$row = mysqli_fetch_array($result);
-            // echo $this->query;
+            echo $this->query;
             return $result;
 
         }

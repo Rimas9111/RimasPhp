@@ -9,7 +9,6 @@ class Posts
     }
     public function getPostById($id){
         $db = new Database();
-        // $id = '11';
         $db->select()->from('posts')->where('id',$id);
         return $db->get();
     }
@@ -22,7 +21,6 @@ class Posts
         return $db->get();
     }
     public function updatePost($id, $slug, $title, $content, $photo, $time){
-        // $id = '11';
         $db = new Database();
         $db->update('posts')
         ->set([
@@ -34,7 +32,17 @@ class Posts
         ])->where('id',$id);
         return $db->get();
     }
-    public function deletePost(){
-        
-    }
+    // public function deletePost($id, $active){
+    //     $db = new Database();
+    //     $db->update('posts')
+    //     ->set([
+    //         '`active`' => $active
+    //     ])->where('id',$id);
+    //     return $db->get();
+    // }
+    public function deletePost($id){
+		$db = new Database();
+		$db->update('posts')->softDelete("`active` = '0'")->where('id', $id);
+		return $db->get();
+	}
 }
