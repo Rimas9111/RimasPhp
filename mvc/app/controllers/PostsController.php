@@ -1,8 +1,18 @@
 <?php
-include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
-include_once '/wamp64/www/RimasPhp/mvc/models/Posts.php';
-include_once '/wamp64/www/RimasPhp/mvc/helpers/FormHelper.php';
-include_once '/wamp64/www/RimasPhp/mvc/helpers/Helper.php';
+namespace App\Controllers;
+
+use App\Libs\Controller;
+
+use App\Models\Posts;
+
+use App\Helpers\FormHelper;
+
+use App\Helpers\Helper;
+
+// include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
+// include_once '/wamp64/www/RimasPhp/mvc/models/Posts.php';
+// include_once '/wamp64/www/RimasPhp/mvc/helpers/FormHelper.php';
+// include_once '/wamp64/www/RimasPhp/mvc/helpers/Helper.php';
 
 class PostsController extends Controller
 {

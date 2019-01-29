@@ -1,4 +1,9 @@
 <?php
+
+require_once ('vendor/autoload.php');
+
+//use App\Controllers\PostsController;
+
 if (isset($_SERVER['PATH_INFO'])){
 // path pervesti i mazasias
 $path = explode( '/', $_SERVER['PATH_INFO']);
@@ -13,9 +18,10 @@ if (isset($path[1])){ // posts
 $classFile = ucfirst($path[1]).'Controller'; //PostController
 }
 
-    if (file_exists( 'controllers/'.$classFile.'.php')){
-        include_once('controllers/'.$classFile.'.php');
-        $object = new $classFile;
+    if (file_exists( 'app/controllers/'.$classFile.'.php')){
+        $class = 'App\Controllers\\'.$classFile;
+        $object = new $class;
+
         if (!empty($path[2])){
             $method = $path[2]; //padaryti i mazasias
         

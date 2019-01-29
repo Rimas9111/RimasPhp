@@ -1,4 +1,5 @@
 <?php
+namespace App\Helpers;
 class PasswordHelper
 {
     public static function password($password){

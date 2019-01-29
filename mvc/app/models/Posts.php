@@ -1,5 +1,9 @@
 <?php 
-include_once 'libs/Database.php';
+namespace App\Models;
+
+use App\Libs\Database;
+
+// include_once 'libs/Database.php';
 class Posts
 {
     public function getAllPosts(){

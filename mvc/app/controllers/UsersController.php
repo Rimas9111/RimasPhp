@@ -1,11 +1,23 @@
 <?php
-include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
-include_once '/wamp64/www/RimasPhp/mvc/models/Users.php';
-include_once '/wamp64/www/RimasPhp/mvc/helpers/FormHelper.php';
-include_once '/wamp64/www/RimasPhp/mvc/helpers/PasswordHelper.php';
-include_once '/wamp64/www/RimasPhp/mvc/helpers/Helper.php';
+namespace App\Controllers;
 
-class UsersController
+use App\Libs\Controller;
+
+use App\Models\Users;
+
+use App\Helpers\FormHelper;
+
+use App\Helpers\PasswordHelper;
+
+use App\Helpers\Helper;
+
+// include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
+// include_once '/wamp64/www/RimasPhp/mvc/models/Users.php';
+// include_once '/wamp64/www/RimasPhp/mvc/helpers/FormHelper.php';
+// include_once '/wamp64/www/RimasPhp/mvc/helpers/PasswordHelper.php';
+// include_once '/wamp64/www/RimasPhp/mvc/helpers/Helper.php';
+
+class UsersController extends Controller
 {
     // public function index(){
     //     echo 'useriai veikia';
@@ -78,6 +90,7 @@ class UsersController
             $x = $user->logUser($email, $password);
             print_r($x->fetch_assoc());
             // echo '<br>' .$info['name'];
+
             echo '<br>' ."setint sesija autoriaus name";
         }
     }

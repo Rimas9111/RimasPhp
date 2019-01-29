@@ -1,5 +1,9 @@
 <?php
-include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
+namespace App\Controllers;
+
+use App\Libs\Controller;
+
+// include_once '/wamp64/www/RimasPhp/mvc/libs/Controller.php';
 class ErrorController extends Controller
 {
     public function error(){
