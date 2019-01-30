@@ -61,7 +61,7 @@ class UsersController extends Controller
             $user->insertUser($email, $name, $password, $active, $role);
         }
     }
-    public function log($id){
+    public function log(){
         $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/users/logUser/');
         $user = new Users();
 
@@ -87,11 +87,27 @@ class UsersController extends Controller
         if(isset($_POST['log'])){
             $email = $_POST['email'];
             $password = PasswordHelper::password($_POST['password']);
-            $x = $user->logUser($email, $password);
-            print_r($x->fetch_assoc());
-            // echo '<br>' .$info['name'];
-
-            echo '<br>' ."setint sesija autoriaus name";
+            $userInfo = $user->logUser($email);
+            $info = $userInfo->fetch_assoc();
+            if ($email == $info['email']){
+                if ($info['active'] == "0"){
+                    if ($password != $info['password']){
+                        echo "Password do not match";
+                    } else {
+                        $_SESSION['id'] = $info['id'];
+                        $_SESSION['name'] = $info['name'];
+                        echo "Labas " .$_SESSION['name'];
+                        $_SESSION['login'] = TRUE;
+                        // header('Location: http://localhost/rimasphp/mvc/index.php/posts');
+                    }
+                } else {
+                    echo 'This user is not active';
+                }
+            } else {
+                echo 'User do not exist';
+            }
+                // print_r($userInfo->fetch_assoc());          
+                // echo '<br>' ."setint sesija autoriaus name";
         }
     }
 }

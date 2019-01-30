@@ -7,6 +7,7 @@ use App\Libs\Controller;
 class ErrorController extends Controller
 {
     public function error(){
+        $this->view->title = '404 Error';
         $this->view->error = '404 page not found';
         $this->view->render('error');
     }

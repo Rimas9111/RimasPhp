@@ -92,7 +92,7 @@ namespace App\Libs;
         public function get(){
             $result = mysqli_query($this->connect(), $this->query);
             //$row = mysqli_fetch_array($result);
-            echo $this->query;
+            // echo $this->query;    //kelias
             return $result;
 
         }

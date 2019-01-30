@@ -15,9 +15,15 @@ class Users
         return $db->get();
     }
 
-    public function logUser($email, $password){
+    public function logUser($email){
         $db = new Database();
-        $db->select()->from('users')->where('email',$email)->whereAnd('password',$password)->whereAnd('active',1);
+        $db->select()->from('users')->where('email',$email);
         return $db->get();
     }
+
+    // public function logUser($email, $password){
+    //     $db = new Database();
+    //     $db->select()->from('users')->where('email',$email)->whereAnd('password',$password)->whereAnd('active',1);
+    //     return $db->get();
+    // }
 }

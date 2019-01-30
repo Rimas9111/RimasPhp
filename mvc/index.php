@@ -30,26 +30,28 @@ $classFile = ucfirst($path[1]).'Controller'; //PostController
                     $id = $path[3];
                     $object -> $method($id);
                 } else {
-                    // $object -> $method();
-                    include_once('controllers/ErrorController.php');
-                    $errorObject = new ErrorController();
-                    $errorObject -> error();
+                    $object -> $method();
                 }         
             } else {
-                include_once('controllers/ErrorController.php');
-                $errorObject = new ErrorController();
+                // include_once('controllers/ErrorController.php');
+                // $errorObject = new ErrorController();
+                $errorObject = new App\Controllers\ErrorController();
                 $errorObject -> error();
             }
         } else {
             $object->index();
         }
     } else {
-        include_once('controllers/ErrorController.php');
-        $errorObject = new ErrorController();
+        // include_once('controllers/ErrorController.php');
+        // $errorObject = new ErrorController();
+        $errorObject = new App\Controllers\ErrorController();
         $errorObject -> error();
     }
 } else {
-    echo "indexas";
+    // echo "indexas";
+    // 	include_once('app/controllers/IndexController.php');
+	$indexObject = new App\Controllers\IndexController();
+	$indexObject->index();
 }
 ?>
 
