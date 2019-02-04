@@ -6,6 +6,11 @@ use App\Libs\Database;
 // include_once 'libs/Database.php';
 class Users
 {
+    public function getAllUsers(){
+        $db = new Database();
+        $db->select()->from('users');
+        return $db->get();
+    }
     public function insertUser($email, $name, $password, $active, $role){
         $db = new Database();
         $db->insert()

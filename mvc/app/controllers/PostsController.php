@@ -21,7 +21,7 @@ class PostsController extends Controller
 
         $posts= new Posts();
         // echo 'visi irasai';
-        $this->view->title = 'titlas';
+        $this->view->title = 'Posts';
         $this->view->posts = $posts->getAllPosts();
 
         $this->view->headline = 'Musu headlinas';
@@ -50,19 +50,19 @@ class PostsController extends Controller
             'type' => "text",
             'placeholder' => "Image URL"
         
-        ])->input([
-            'name' => "public",
-            'type' => "checkbox",
-            'value' => 1
+        // ])->input([
+        //     'name' => "public",
+        //     'type' => "checkbox",
+        //     'value' => 1
         ]);
-        $form->select([
-            '1' => "vienas",
-            '2' => "du",
-            '3' => "trys"
-        ],[
-            'name' => 'selectas',
-            'class' => 'klase' 
-        ]);
+        // $form->select([
+        //     '1' => "vienas",
+        //     '2' => "du",
+        //     '3' => "trys"
+        // ],[
+        //     'name' => 'selectas',
+        //     'class' => 'klase' 
+        // ]);
 
         $form->textarea([
             'rows' => "2",
@@ -75,7 +75,9 @@ class PostsController extends Controller
             'type' => "submit",
             'value' => "Add"
         ]);
-
+        $this->view->title = 'Posts';
+        $this->view->index = 'Posts';// Posts
+        $this->view->render('post');
         echo $form->get();
     }
 

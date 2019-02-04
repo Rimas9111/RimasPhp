@@ -22,8 +22,18 @@ class UsersController extends Controller
     // public function index(){
     //     echo 'useriai veikia';
     // }
+    public function index()
+    {
 
-    public function index(){
+        $posts= new Users();
+        $this->view->title = 'titlas';
+        // $this->view->users = $users->getAllUsers();
+        $this->view->index = 'Welcome';
+        $this->view->render('users');
+
+    }
+
+    public function add(){
         $form = new FormHelper('POST','http://localhost/rimasphp/mvc/index.php/users/store/');
 
         $form->input([
@@ -46,7 +56,9 @@ class UsersController extends Controller
             'type' => "submit",
             'value' => "Register"
         ]);
-
+        $this->view->title = 'Registration';
+        $this->view->index = 'Registration';
+        $this->view->render('users');
         echo $form->get();
     }
 
@@ -79,6 +91,9 @@ class UsersController extends Controller
             'type' => "submit",
             'value' => "Log"
         ]);
+        $this->view->title = 'Log In';
+        $this->view->index = 'Log In';
+        $this->view->render('users');
 
         echo $form->get();
     }
@@ -90,15 +105,15 @@ class UsersController extends Controller
             $userInfo = $user->logUser($email);
             $info = $userInfo->fetch_assoc();
             if ($email == $info['email']){
-                if ($info['active'] == "0"){
+                if ($info['active'] == "1"){
                     if ($password != $info['password']){
                         echo "Password do not match";
                     } else {
                         $_SESSION['id'] = $info['id'];
                         $_SESSION['name'] = $info['name'];
-                        echo "Labas " .$_SESSION['name'];
-                        $_SESSION['login'] = TRUE;
-                        // header('Location: http://localhost/rimasphp/mvc/index.php/posts');
+                        // echo "Labas " .$_SESSION['name'];
+                        // $_SESSION['login'] = TRUE;
+                        header('Location: http://localhost/rimasphp/mvc/index.php');
                     }
                 } else {
                     echo 'This user is not active';
@@ -110,5 +125,10 @@ class UsersController extends Controller
                 // echo '<br>' ."setint sesija autoriaus name";
         }
     }
+	public function logOut(){
+		session_unset($_SESSION['id'],$_SESSION['name']);
+		session_destroy();
+		header('Location: http://localhost/rimasphp/mvc/index.php');
+	}
 }
 ?>

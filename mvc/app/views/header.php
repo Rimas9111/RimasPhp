@@ -19,10 +19,10 @@
                     <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users">useriai</a>
+                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/posts/add">add</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users">regist</a>
+                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users/add">regist</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/posts">postai</a>
@@ -30,20 +30,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users/log">loginas</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users">users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users/logOut">logout</a>
+                </li>
             </ul>
         </div>
+        <div>
+            <?php 
+            if(isset($_SESSION["id"])){
+                    echo "<br>" . "Sveiki " . $_SESSION["name"];
+            }
+            ?>
+        </div>
     </nav>
-        <!-- <nav>
-            <li>
-                <a href="index.php/users">useriai</a>
-            </li>
-            <li>
-                <a href="index.php/users">regist</a>
-            </li>
-            <li>
-                <a href="index.php/posts">postai</a>
-            </li>
-            <li>
-                <a href="index.php/users/log/">loginas</a>
-            </li>
-        </nav> -->
