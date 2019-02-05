@@ -5,6 +5,8 @@ use App\Libs\Controller;
 
 use App\Models\Posts;
 
+use App\Models\Users;
+
 use App\Models\userPosts;
 
 use App\Helpers\FormHelper;
@@ -35,7 +37,7 @@ class PostsController extends Controller
     public function ajax()
     {
 
-        $posts= new Posts();
+        // $posts= new Posts();
         // echo 'visi irasai';
         $this->view->title = 'Ajax';
 
@@ -43,11 +45,25 @@ class PostsController extends Controller
         $this->view->render('ajaxLesson');
 
     }
-    // public function show(){
-    //     echo 'show irasai';
+    // public function show($id){
+    //     echo $id;
     // }
     public function show($id){
-        echo $id;
+		$this->view->title = 'Post';
+		$posts = new Posts();
+		$postsArray = [];
+		$allPosts = $posts->getPostById($id);
+		while ($postInfo = $allPosts->fetch_assoc()) {
+			$postAuthorId = $postInfo['author'];
+			$users = new Users();
+			$currentUser = $users->getUserById($postAuthorId);
+			while ($authorName = $currentUser->fetch_assoc()){
+				$postInfo['author'] = $authorName;
+			}
+			$postsArray[] = $postInfo;
+		}
+        $this->view->posts = $postsArray;
+        $this->view->render('postId');    
     }
 
     public function add(){
@@ -83,7 +99,8 @@ class PostsController extends Controller
             'cols' => "50",
             'name' => "content",
             'class' => ""
-        ]);
+        ], "content");
+        
         $form->input([
             'name' => "submit",
             'type' => "submit",
@@ -106,7 +123,7 @@ class PostsController extends Controller
             $content = $_POST['content'];
             $time = date('Y-m-d H:i:s');
             $active = '1';
-            $post->insertPost($slug, $title, $photo, $author, $content, $time, $active);
+            $post->insertPost($slug, $title, $content, $author, $photo, $time, $active);
         }
     }
 
@@ -135,7 +152,7 @@ class PostsController extends Controller
                 'cols' => "50",
                 'name' => "content",
                 
-            ],$content = $info['photo']);
+            ],$content = $info['content']);
             $form->input([
                 'name' => "update",
                 'type' => "submit",
@@ -159,7 +176,7 @@ class PostsController extends Controller
             $content = $_POST['content'];
             $photo = $_POST['photo'];
             $time = date("Y-m-d H:i:s");
-            $posts->updatePost($id, $slug, $title, $content, $photo, $time);
+            $posts->updatePost($id, $slug, $title, $photo, $content, $time);
         } else {
             if(isset($_POST['delete'])){
                 $this->delete($id);

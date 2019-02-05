@@ -11,6 +11,11 @@ class Users
         $db->select()->from('users');
         return $db->get();
     }
+    public function getUserById($id){
+		$db = new Database();
+		$db->select()->from('users')->where('id', $id)->whereAnd('active', '1');
+		return $db->get();
+	}
     public function insertUser($email, $name, $password, $active, $role){
         $db = new Database();
         $db->insert()
