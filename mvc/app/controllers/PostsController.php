@@ -5,6 +5,8 @@ use App\Libs\Controller;
 
 use App\Models\Posts;
 
+use App\Models\userPosts;
+
 use App\Helpers\FormHelper;
 
 use App\Helpers\Helper;
@@ -27,6 +29,18 @@ class PostsController extends Controller
         $this->view->headline = 'Musu headlinas';
         // $this->view->render('header');
         $this->view->render('posts');
+
+    }
+
+    public function ajax()
+    {
+
+        $posts= new Posts();
+        // echo 'visi irasai';
+        $this->view->title = 'Ajax';
+
+        $this->view->headline = 'Musu headlinas';
+        $this->view->render('ajaxLesson');
 
     }
     // public function show(){
@@ -77,8 +91,9 @@ class PostsController extends Controller
         ]);
         $this->view->title = 'Posts';
         $this->view->index = 'Posts';// Posts
-        $this->view->render('post');
-        echo $form->get();
+        $this->view->form = $form->get();
+        $this->view->render('userPosts');
+        // echo $form->get();
     }
 
     public function store(){
@@ -87,7 +102,7 @@ class PostsController extends Controller
             $slug = Helper::getSlug($_POST['title']);
             $title = $_POST['title'];
             $photo = $_POST['photo'];
-            $author = '1';
+            $author = $_SESSION['id'];
             $content = $_POST['content'];
             $time = date('Y-m-d H:i:s');
             $active = '1';

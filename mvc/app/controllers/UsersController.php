@@ -126,9 +126,13 @@ class UsersController extends Controller
         }
     }
 	public function logOut(){
-		session_unset($_SESSION['id'],$_SESSION['name']);
-		session_destroy();
-		header('Location: http://localhost/rimasphp/mvc/index.php');
+        if (isset($_SESSION['id'],$_SESSION['name'])){
+            session_unset($_SESSION['id'],$_SESSION['name']);
+            session_destroy();
+            header('Location: http://localhost/rimasphp/mvc/index.php');
+        } else {
+            header('Location: http://localhost/rimasphp/mvc/index.php');
+        }
 	}
 }
 ?>

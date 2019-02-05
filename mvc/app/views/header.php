@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users/logOut">logout</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/posts/ajax">ajaxLesson</a>
+                </li>
             </ul>
         </div>
         <div>
