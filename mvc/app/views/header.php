@@ -19,7 +19,7 @@
                     <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/posts/add">add</a>
+                    <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/posts/add">addPost</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/rimasphp/mvc/index.php/users/add">regist</a>

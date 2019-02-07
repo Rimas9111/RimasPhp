@@ -124,6 +124,7 @@ class PostsController extends Controller
             $time = date('Y-m-d H:i:s');
             $active = '1';
             $post->insertPost($slug, $title, $content, $author, $photo, $time, $active);
+            header('Location: http://localhost/rimasphp/mvc/index.php');
         }
     }
 
